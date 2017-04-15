@@ -1,9 +1,11 @@
 package com.example.marloncordova.appservice;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewStub;
+import android.widget.RelativeLayout;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,10 +76,18 @@ public class PrincipalActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
+
+        //importPanel.setVisibility(View.INVISIBLE); // set invisible visibility of ViewStub
+
         if (id == R.id.nav_home) {
-
+            ViewStub importPanel = ((ViewStub) findViewById(R.id.stub_import));
+            importPanel.setLayoutResource(R.layout.content_principal);
+            importPanel.inflate();
         } else if (id == R.id.nav_about) {
-
+            ViewStub importPanel = ((ViewStub) findViewById(R.id.stub_import));
+            importPanel.setLayoutResource(R.layout.acerca);
+            importPanel.inflate();
         } else if (id == R.id.nav_service) {
 
         }
