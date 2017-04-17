@@ -1,12 +1,10 @@
-package com.example.marloncordova.appservice;
+package com.example.marloncordova.appservice.activities;
 
-import android.content.Context;
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,11 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewStub;
-import android.widget.RelativeLayout;
+
+import com.example.marloncordova.appservice.R;
+import com.example.marloncordova.appservice.dummy.DummyContent;
 
 public class PrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        HomeFragment.OnFragmentInteractionListener,
+        AboutFragment.OnFragmentInteractionListener,
+        ServiceFragment.OnFragmentInteractionListener
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment frmHome =new HomeFragment();
+        IniciarFragment(frmHome);
+
     }
 
     @Override
@@ -76,24 +83,40 @@ public class PrincipalActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
-
-        //importPanel.setVisibility(View.INVISIBLE); // set invisible visibility of ViewStub
-
         if (id == R.id.nav_home) {
-            ViewStub importPanel = ((ViewStub) findViewById(R.id.stub_import));
-            importPanel.setLayoutResource(R.layout.content_principal);
-            importPanel.inflate();
+            HomeFragment frmHome =new HomeFragment();
+            IniciarFragment(frmHome);
         } else if (id == R.id.nav_about) {
-            ViewStub importPanel = ((ViewStub) findViewById(R.id.stub_import));
-            importPanel.setLayoutResource(R.layout.acerca);
-            importPanel.inflate();
-        } else if (id == R.id.nav_service) {
 
+            AboutFragment frmAbout =new AboutFragment();
+            IniciarFragment(frmAbout);
+        } else if (id == R.id.nav_service) {
+            ServiceFragment frmService =new ServiceFragment();
+            IniciarFragment(frmService);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void IniciarFragment(Fragment frm){
+
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm != null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frmPrincipal, frm);
+            ft.commit();
+        }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /*@Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }*/
 }

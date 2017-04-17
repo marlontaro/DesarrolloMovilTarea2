@@ -1,0 +1,44 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AboutFragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SOBRE NOSOTROS"
+            android:gravity="center"
+            android:textSize="30dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Somos una empresa peruana especializada en Desarrollo de Software a medida, Consultoría y aceleración de Startups. Nuestra misión y motivación es utilizar la tecnología para incrementar el resultado y valor de su negocio."
+            android:textSize="20dp"
+            android:layout_gravity="center_vertical|right"
+            />
+
+        <ImageView
+            android:id="@+id/imageView2"
+
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            app:srcCompat="@drawable/equipo"
+            android:layout_weight="0.68" />
+    </LinearLayout>
+
+
+</RelativeLayout>
